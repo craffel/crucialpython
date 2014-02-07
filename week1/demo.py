@@ -107,7 +107,9 @@ plt.plot(w, np.abs(h))
 
 # ## Output
 # * .ipynb files - human-readable json with all output cached
+# * Autosaving
 # * .py files with --script option
 # * HTML, PDF, LaTeX, etc.
 # * nbviewer to view notebooks without IPython installed
+# http://nbviewer.ipython.org/github/craffel/crucialpython/blob/master/week1/demo.ipynb
 
