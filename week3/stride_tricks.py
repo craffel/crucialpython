@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
 # <nbformat>3.0</nbformat>
 
+# <markdowncell>
+
+# #CRÜCIAL PŸTHON Week 3: Numpy Stride Tricks
+
+# <codecell>
+
+from IPython.core.display import Image 
+Image(url='http://labrosa.ee.columbia.edu/crucialpython/logo.png', width=600) 
+
 # <codecell>
 
 # Get our pylab mise en place going
