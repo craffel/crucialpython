@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 # <nbformat>3.0</nbformat>
 
+# <markdowncell>
+
+# #CRÜCIAL PŸTHON Week 4: Numpy Broadcasting
+
 # <codecell>
 
 from IPython.core.display import Image 
