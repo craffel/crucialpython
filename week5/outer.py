@@ -19,7 +19,7 @@ Image(url='http://labrosa.ee.columbia.edu/crucialpython/logo.png', width=600)
 
 # <markdowncell>
 
-# ### Casting ye out, tight loops!
+# ### Cast ye out, tight loops!
 # 
 # High-level programs sometimes have computational bottleneck at a tight loop, or even nested loops.  This comes up frequently when comparing two sets of objects, say to build a similarity matrix or do collision detection.
 # 
@@ -49,17 +49,6 @@ def make_point_data(n, m):
 
 # <codecell>
 
-# Generate and display the example data
-a, b = make_point_data(5, 10)
-# And a threshold
-r = 0.25
-
-print 'a: ', a
-print 'b: ', b
-print 'r: ', r
-
-# <codecell>
-
 # Build a list and iterate over all pairs
 def find_similar_points(a, b, r):
     '''Given two lists of numbers a and b, and a threshold r,
@@ -77,6 +66,17 @@ def find_similar_points(a, b, r):
                 
     # Return indices in ndarray format
     return np.asarray(hits)
+
+# <codecell>
+
+# Generate and display the example data
+a, b = make_point_data(5, 10)
+# And a threshold
+r = 0.25
+
+print 'a: ', a
+print 'b: ', b
+print 'r: ', r
 
 # <codecell>
 
@@ -101,6 +101,20 @@ print find_similar_points(a, b, r)
 
 # <codecell>
 
+def make_interval_data(n):
+    # Generate random start times
+    S = np.random.randn(n)
+    
+    # Sort it, for convenience
+    S = np.sort(S)
+
+    # Add a random positive length to each one
+    T = S + np.abs(np.random.randn(n))
+    
+    return S, T
+
+# <codecell>
+
 def find_interval_overlap(S, T):
     '''S and T are vectors that encode intervals (S[i], T[i])
     
@@ -121,24 +135,8 @@ def find_interval_overlap(S, T):
 
 # <codecell>
 
-def make_interval_data(n):
-    # Generate random start times
-    S = np.random.randn(n)
-    
-    # Sort it, for convenience
-    S = np.sort(S)
-
-    # Add a random positive length to each one
-    T = S + np.abs(np.random.randn(n))
-    
-    return S, T
-
-# <codecell>
-
 # Let's make up some test data
 S, T = make_interval_data(5)
-
-# <codecell>
 
 # What does it look like?
 pprint( zip(S, T) )
