@@ -1,0 +1,97 @@
+{% extends 'layout.jinja2.html' %}
+
+{% block title %}FoodTracker -- Tracked Meals{% endblock %}
+
+{% block css %}
+        {{ link_tag('main') }}
+{% endblock %}
+
+{% macro error(name) -%}
+    {% if errors and errors[name] -%}
+        error
+    {% endif -%}
+{%- endmacro %}
+
+{% macro AvgSec(name,dict_val) -%}
+<h2 class='text-info'> Average Costs for {{ name }} </h2>
+<ul class="list-group">
+    <li class="list-group-item">
+        <h3> {{ dict_val["Today"] }} -- Money Spent Today </h3>
+    </li>
+    <li class="list-group-item">
+         <h3> {{ dict_val["Week"] }} -- Average Daily Spend This Week </h3>
+    </li>
+    <li class="list-group-item">
+        <h3> {{ dict_val["Month"] }} -- Average Daily Spend This Month </h3>
+    </li>
+</ul>
+{%- endmacro %}
+
+{% macro EntriesTable(entries) -%}
+<h2 class='text-success'> Complete List of Meals/Drinks </h2>
+<table class="table-condensed">
+    <tr>
+        <th>Alcohol or Food?</th>
+        <th>Price</th>
+        <th>Description of Meal</th>
+        <th>Month</th>
+        <th>Day</th>
+        <th>Year</th>
+    </tr>
+
+    {% for entry in entries %}
+        {% if (entry["FoodType"] == 'Alcohol') %}
+            <tr>
+                <th class="text-warning">{{ entry["FoodType"] }}</th>
+                <th>{{ entry["Price"] }}</th>
+                <th>{{ entry["Meal"] }}</th>
+                <th>{{ entry["Month"] }}</th>
+                <th>{{ entry["Day"] }}</th>
+                <th>{{ entry["Year"] }}<th>
+            </tr>
+        {% else %}
+            <tr>
+                <th class="text-info">{{ entry["FoodType"] }}</th>
+                <th>{{ entry["Price"] }}</th>
+                <th>{{ entry["Meal"] }}</th>
+                <th>{{ entry["Month"] }}</th>
+                <th>{{ entry["Day"] }}</th>
+                <th>{{ entry["Year"] }}<th>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{%- endmacro %}
+
+{% block body %}
+
+	<div class="page-header">
+        <h1>Tracked Meals<small> -- Don't get fat or broke!</small></h1>
+    </div>
+
+    <div>
+        {{ AvgSec("Food", food_vals) }}
+    </div>
+
+    <div>
+        {{ AvgSec("Alcohol", alcohol_vals) }}
+    </div>
+
+    <div>
+        <h3 class="text-primary"> Want to add another meal for today? </h3>
+        <a href="/" class="btn btn-primary btn-sm" role="button">Meal Entry Page!</a>  
+    </div>
+
+    <div>
+        {{ EntriesTable(entries)}}
+    </div>
+
+{% endblock %}
+
+{% block js %}
+        {{ script_tag('hnfake') }}
+        {{ script_tag('cookies') }}
+        {{ script_tag('animation') }}
+        {{ script_tag('firstuser') }}
+        {{ script_tag('main') }}
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'layout.jinja2.html' %}
+
+{% block title %}FoodTracker{% endblock %}
+
+{% block css %}
+        {{ link_tag('main') }}
+{% endblock %}
+
+{% macro error(name) -%}
+    {% if errors and errors[name] -%}
+        error
+    {% endif -%}
+{% endmacro -%}
+
+{% macro input(name, desc, type='text', placeholder=None) -%}
+    <div class="control-group {{ error(name) }}">
+        <label class="control-label" for="{{ name }}">{{ desc }}</label>
+        <div class="controls">
+            <input  type="{{ type }}" 
+                    name="{{ name }}" id="{{ name }}" 
+                    value="{{ request.form[name] }}"
+                    placeholder="{{ placeholder }}">
+        </div>
+    </div>
+{%- endmacro %}
+
+
+{% macro button(name) -%}
+    <button type="submit" class="btn btn-primary">{{ name }}</button>
+{%- endmacro %}
+
+{% block body %}
+		<div id="first-visit-dialog" class="modal hi fade in">
+			<div class="modal-header">
+				<a class="close" data-dismiss="modal">x</a>
+				<h3>Welcome to FoodTracker<h3>
+			</div>
+		
+				<div class="modal-body">
+					<h4>Keep track of what you eat and for how much</h4>
+                    		<p> FoodTracker is an easy to use web app, which allows you to track the amount of money that you spend on food.  Come inside and check it out!<p>
+                            {% if exist_error %}
+                                <p class='text-warning'> {{ message }} </p>
+                            {% else %}
+                                <p class='text-info'> {{ message }} </p>
+                            {% endif %}
+				</div>
+			<div class="modal-footer">
+            	<div id="submit-form">
+            		<form method="POST" action="tracked_meals">
+            			<fieldset>
+            				{{ input("UserName", "Enter Your Username!", placeholder="UserName") }}
+                            {{ input("FoodType","Is this a Food or Alcohol expense?", placeholder="Food or Alcohol")}}
+                            {{ input("Meal", "Enter the Meal Description", placeholder="Meal") }}
+                            {{ input("Price", "Enter the Price of the Meal", placeholder="Price") }}
+            				<div class="form-actions">
+            					{{ button("Submit") }}
+            				</div>
+            		    </fieldset>
+            	    </form>				
+                </div>   
+			</div>
+		</div>
+{% endblock %}
+
+{% block js %}
+        {{ script_tag('hnfake') }}
+        {{ script_tag('cookies') }}
+        {{ script_tag('animation') }}
+        {{ script_tag('firstuser') }}
+        {{ script_tag('main') }}
+{% endblock %}

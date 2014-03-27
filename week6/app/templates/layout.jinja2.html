@@ -1,0 +1,34 @@
+{% from 'util.jinja2.html' import link_tag, script_tag, tracked_link %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AMBIApp{% block title %}{% endblock %}</title>
+
+        {{ link_tag('bootstrap') }}
+        {{ link_tag('bootstrap-responsive') }}
+
+        {% block css %}
+        {% endblock %}
+
+    </head>
+    <body>
+
+        <div class="container">
+            <!-- <bootstrap> -->
+
+            {% block body %}
+            {% endblock %}
+
+            <!-- </bootstrap> -->
+        </div>
+
+        {{ script_tag('jquery') }}
+        {{ script_tag('bootstrap') }}
+        <script>window.RAPID = {};</script>
+
+        {% block js %}
+        {% endblock %}
+
+    </body>
+</html>
