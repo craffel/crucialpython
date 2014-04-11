@@ -75,12 +75,15 @@ result = Parallel(n_jobs=8, verbose=50)(delayed(convolve_random)(40000 + i*1000)
 
 # <codecell>
 
-import time
 # Try convolution sizes [5000, 10000, 15000 ... 50000]
 sizes = 5000*(1 + np.arange(10))
 # Try n_jobs from [1, ..., max_jobs]
 max_jobs = 8
 n_jobs_values = 1 + np.arange(max_jobs)
+
+# <codecell>
+
+import time
 # Store the timing for each setting
 times = np.zeros((n_jobs_values.shape[0], sizes.shape[0]))
 for n, n_jobs in enumerate(n_jobs_values):
