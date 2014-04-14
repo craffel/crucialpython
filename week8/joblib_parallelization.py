@@ -18,7 +18,7 @@ Image(url='http://labrosa.ee.columbia.edu/crucialpython/logo.png', width=600)
 # <markdowncell>
 
 # ## joblib.Parallel and joblib.delayed
-# Two write a simple parallelized `for` loop using joblib, you need to use the `Parallel` class and the `delayed` function.  Together, they form a construct which looks a lot like list comprehension.  `delayed` is a [dectorator](http://nbviewer.ipython.org/github/craffel/crucialpython/blob/master/week7/decorators.ipynbdecorator) which simply returns the function, its arguments, and its keyword arguments as a tuple.  `Parallel` constructs a class which can be called with a list of tuples, where each tuple includes a function and its arguments.  It subsequently calls each function from each tuple with the corresponding arguments.  But, what you really need to know in practice is simple:
+# Two write a simple parallelized `for` loop using joblib, you need to use the `Parallel` class and the `delayed` function.  Together, they form a construct which looks a lot like list comprehension.  `delayed` is a [decorator](http://nbviewer.ipython.org/github/craffel/crucialpython/blob/master/week7/decorators.ipynbdecorator) which simply returns the function, its arguments, and its keyword arguments as a tuple.  `Parallel` constructs a class which can be called with a list of tuples, where each tuple includes a function and its arguments.  It subsequently calls each function from each tuple with the corresponding arguments.  But, what you really need to know in practice is simple:
 
 # <codecell>
 
@@ -126,7 +126,7 @@ ax = plt.gca().set_color_cycle(colors)
 for job_results in times:
     plt.plot(sizes, job_results)
 # Set up labels and legend
-plt.xlabel('Correlation size')
+plt.xlabel('Convolution size')
 plt.ylabel('Time (s)')
 plt.legend(n_jobs_values, 'upper left', title='n_jobs')
 
