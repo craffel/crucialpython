@@ -31,10 +31,6 @@ Z = X+Y
 A = 3
 B = 4
 
-# <codecell>
-
-%debug
-
 # <markdowncell>
 
 # display variables
@@ -54,6 +50,10 @@ locals()
 # <codecell>
 
 %qtconsole
+
+# <codecell>
+
+%debug
 
 # <headingcell level=2>
 
@@ -97,7 +97,7 @@ def square_sum(a,b):
 import ipdb as pdb
 X = 1
 pdb.set_trace()
-Y = 2
+Y = 1
 Z= square_sum(X,Y)
 for i in xrange(20):
     X=X+ square_sum(X,Y)/(X*X)
@@ -111,11 +111,11 @@ for i in xrange(20):
 # <codecell>
 
 %pdb
+
+# <codecell>
+
 X = 1
 Y = 'c'
 Z = X+Y
 A = 1
-
-# <codecell>
-
 
